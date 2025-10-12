@@ -1,0 +1,1 @@
+The code, and plots, are created using data processed from the original .CSV, which hasn't been formatted for code cleanliness. The analysis-ready datasets in subsequent folders "~/{FOLDER NAME}" use a better formatted version for easy analysis.
