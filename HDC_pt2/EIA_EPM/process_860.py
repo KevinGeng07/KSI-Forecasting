@@ -74,8 +74,7 @@ axs.grid(True, alpha=0.3, linestyle='--')
 
 # fig.legend(loc='upper center', bbox_to_anchor=(0.5, 0.975), frameon=True, fancybox=True, shadow=True, fontsize=9)
 
-fig.legend(loc='upper center', bbox_to_anchor=(0.5, -0.05), frameon=True, fancybox=True, shadow=True, fontsize=9)
-
+fig.legend(loc='upper center', bbox_to_anchor=(0.5, 0.125), frameon=True, fancybox=True, shadow=True, fontsize=9, ncols=6)
 plt.subplots_adjust(bottom=0.2)
 
 fig.suptitle('Illinois Electricity Generation Analysis (2001-2025)', fontsize=14, fontweight='bold', y=0.99)
