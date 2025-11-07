@@ -29,9 +29,6 @@ icc_ptc_datetime = [datetime.strptime(x.split()[0], '%Y-%m-%d') for x in icc_ptc
 icc_ptc_csv.insert(0, 'Datetime', icc_ptc_datetime)
 icc_ptc_csv.drop(['DATE'], axis=1, inplace=True)
 
-# print(icc_ptc_csv['Datetime'].tolist())
-# exit()
-
 ### Join dataframes together.
 combined_csv = pd.concat([eia_861_csv.set_index('Datetime'), eia_epm_csv.set_index('Datetime'), icc_ptc_csv.set_index('Datetime')], axis=1, join='outer')
 combined_csv = combined_csv.reset_index()
