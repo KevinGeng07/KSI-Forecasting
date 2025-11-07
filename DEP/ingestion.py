@@ -1,7 +1,8 @@
-### Combining all past data files for historical data analyses.
+### Combining all past data files for historical data analysis.
 import pandas as pd
 from datetime import datetime
 import numpy as np
+from tabulate import tabulate 
 
 
 ### EIA-861M Monthly Electric Power Industry Report
@@ -45,20 +46,19 @@ combined_csv.drop(['TOTAL Revenue', 'TOTAL Sales', 'TOTAL Customers', 'TOTAL Pri
 ### Compute raw data statistics.
 writefile = 'PTC_ts_stats.txt'
 open(writefile, 'w').close()
-### TODO: CHANGE DISPLAY INTO TABULATE.
 labels = ['Feature', '25th', 'Median', '75th', 'Mean', 'Std. Dev']
 
 with open(writefile, 'a') as f:
-    f.write('Raw Data Statistics\n\n')
-    f.write('Feature\t25th\tMedian\t75th\tMean\tStd. Dev')
+    f.write('Raw Data Statistics\n')
 
+    f_stats = []
     for c in combined_csv.columns:
         if c == 'Datetime': continue
 
         c_list = combined_csv[c].to_numpy()
-        # print(c_list)
-        f.write(f'\n{c}\t{np.nanpercentile(c_list, 25)}\t{np.nanmedian(c_list)}\t{np.nanpercentile(c_list, 75)}\t{np.nanmean(c_list)}\t{np.nanstd(c_list)}')
+        f_stats.append([c, np.nanpercentile(c_list, 25), np.nanmedian(c_list), np.nanpercentile(c_list, 75), np.nanmean(c_list), np.nanstd(c_list)])
     
+    f.write(tabulate([labels] + f_stats))
     f.write('\n\n')
     f.close()
 
@@ -69,15 +69,16 @@ combined_csv = combined_csv.fillna(0)
 
 ### Compute imputed data statistics.
 with open(writefile, 'a') as f:
-    f.write('Imputed Data Statistics\n\n')
-    f.write('Feature\t25th\tMedian\t75th\tMean\tStd. Dev')
+    f.write('Imputed Data Statistics\n')
 
+    f_stats = []
     for c in combined_csv.columns:
         if c == 'Datetime': continue
 
         c_list = combined_csv[c].to_numpy()
-        f.write(f'{c}\t{np.nanpercentile(c_list, 25)}\t{np.nanmedian(c_list)}\t{np.nanpercentile(c_list, 75)}\t{np.nanmean(c_list)}\t{np.nanstd(c_list)}')
+        f_stats.append([c, np.nanpercentile(c_list, 25), np.nanmedian(c_list), np.nanpercentile(c_list, 75), np.nanmean(c_list), np.nanstd(c_list)])
     
+    f.write(tabulate([labels] + f_stats))
     f.write('\n\n')
     f.close()
 
