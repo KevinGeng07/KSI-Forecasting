@@ -1,5 +1,4 @@
-Kendall Sustainable Infrastructure - Multi-Horizon, Multi-Resolution, Multi-Modal PTC Rate Forecasting
-
+Kendall Sustainable Infrastructure - Multi-Modal PTC Rate Interpretability with Explainable Forecasting Models.
 To begin, install all dependencies using: ```pip3 install -r requirements.txt```
 
 Acronyms:
