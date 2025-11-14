@@ -4,3 +4,4 @@ To begin, install all dependencies using: ```pip3 install -r requirements.txt```
 Acronyms:
 EDA = Exploratory Data Analysis
 HDC = Historical Dataset Construction
+DEP = Finalized Dataset + Analysis Plots
