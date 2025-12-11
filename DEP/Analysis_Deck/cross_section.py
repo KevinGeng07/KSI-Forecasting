@@ -29,7 +29,7 @@ def create_cross_section(filepath, month_start, year_start, cols, savefolder):
     for id, col in enumerate(cols):
         axs[0].plot(data_csv['Datetime'], data_csv[col], color=colors[id], label = ' '.join([s[0].upper()+s[1:] for s in col.split()]), linewidth=1.5)
         axs[1].plot(data_csv['Datetime'], data_csv[col], color=colors[id], label = ' '.join([s[0].upper()+s[1:] for s in col.split()]), linewidth=1.5)
-    
+        
     axs[0].set_ylim(1e5, 9e6)
     axs[1].set_ylim(0, 2.5e4)
 
@@ -63,6 +63,7 @@ def create_cross_section(filepath, month_start, year_start, cols, savefolder):
     axs[1].set_xticks(data_csv['Datetime'].to_list()[::2])
     axs[1].set_xticklabels(['/'.join(s.split('-')[:2][::-1]) for s in data_csv['Datetime'].to_list()][::2])
     plt.savefig(f'{savefolder}/{month_start}_{year_start}_event.jpg')
+
 
 ### IRA signed by Biden.
 create_cross_section(filepath, 8, 2022, cols, savefolder_1)
